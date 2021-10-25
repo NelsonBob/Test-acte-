@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" 
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+    <head th:replace="~{base :: head(title = 'Acte')}">
+    </head>
+
+    <body>
+
+        <nav th:replace="~{base :: navigation}"></nav>
+        <div class="container">
+            <div> <strong><b th:text="${execInfo.now.time}"></b></strong></div>
+            <p> <br/></p>
+
+            <div class="row">
+                <h3>Liste des actes de naissances non traitées</h3>
+                <hr>   <div th:if="${param.success}">
+                    <div class="alert alert-success" style="text-align: center">
+                        Un nouvel acte de naissance traite avec success
+                    </div>
+                </div>
+                <div th:if="${param.error}">
+                    <div class="alert alert-danger" style="text-align: center">
+                        Erreur de traitement. veillez reessayer
+                    </div>
+                </div>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <a class="btn btn-default" th:href="@{/acte/traite/no}"><i class="fa fa-redo-alt" aria-hidden="true"></i>Actualiser</a>
+                        <a class="btn btn-default" th:href="@{/}" style="float: right;"><i class="fa fa-arrow-left"></i>Retour</a>
+                    </div>
+                    <div class="panel-body">
+                        <div class="container" >
+                            <form th:action="@{/acte/traite/no}" method="get" style="float: right;margin-right: 30px;">
+                                <label>Mot Clé:</label>
+                                <input type="text" name="motCle"/>
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-search" ></i>Chercher</button>
+                            </form>
+
+                        </div>
+                        <br>
+                        <br>
+                        <table class="table table-striped">
+                            <tr style="background: #df691a;">
+                                <th  >User</th>
+                                <th>Nom de l’enfant</th>
+                                <th>Prénom de l’enfant</th>
+                                <th>Sexe de l’enfant</th>
+                                <th>Date de naissance de l’enfant</th>
+                                <th>Lieu de naissance de l’enfant</th>
+                                <th>Nom du père de l’enfant</th>
+                                <th>Prénom du père de l’enfant</th>
+                                <th>Nom de la mère</th>
+                                <th>Prénom de la mère</th>
+                                <th colspan="2" style="text-align: center;">Action</th>
+                            </tr>
+                            <tr th:each=" t : ${actes}">
+                                <td style="color:  #df691a" th:text=${t.user.email}></td>
+                                <td th:text=${t.nomEnf}></td>
+                                <td th:text=${t.prenomEnf}></td>
+                                <td th:text=${t.sexeEnf}></td>
+                                <td th:text=${t.dateNaissEnf}></td>
+                                <td th:text=${t.lieuNaiss}></td>
+                                <td th:text=${t.nomPer}></td>
+                                <td th:text=${t.prenomPer}></td>
+                                <td th:text=${t.nomMereEnf}></td>
+                                <td th:text=${t.prenMerEnf}></td>
+                                <td>
+                                    <a class="btn" style="background-color: #df691a"  th:href="@{/acte/traite/no/{id}(id=${t.id})}"><i class="fa fa-greater-than-equal"></i>Traiter</a>
+                                </td>
+                            </tr>	
+                        </table>
+                        <div>
+                            <ul class="nav nav-pills">
+                                <li th:class="${status.index == pageCourante}? 'active': ''" th:each="p, status:${pages}">
+                                    <a th:href="@{acte(page=${status.index}, motCle=${motCle})}" th:text="${status.index}"></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div	 th:replace="~{fragments/jsfooter :: body}"></div>
+
+    </body>
+
+</html>

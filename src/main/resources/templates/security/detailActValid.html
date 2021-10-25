@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" 
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+    <head th:replace="~{base :: head(title = 'Information du compte')}">
+    </head>
+
+    <body>
+
+        <nav th:replace="~{base :: navigation}"></nav>
+        <div class="container">
+            <div> <strong><b th:text="${execInfo.now.time}"></b></strong></div>
+            <div class="row">
+                <div class="col-md-7">
+                    <p> <br/><br/><br/>
+                    </p> <h3>Details l'acte de naissance</h3>
+                    <hr>
+                    <div class="list-group">
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Région d’origine</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.regOrigin}"></p>
+                        </span>
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Département d’origine</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.departOrigin}"></p>
+                        </span>
+
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Arrondissement d’origine</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.ArrOrigin}"></p>
+                        </span>
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Nom du centre d’état civil</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.nomCentEtCv}"></p>
+                        </span>
+                        <span class="list-group-item">
+                            <h4 class="list-group-item-heading">Nom de l’enfant</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.nomEnf}"></p>
+                        </span>
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Prénom de l’enfant</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.prenomEnf}"></p>
+                        </span>
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Date de naissance de l’enfant</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.dateNaissEnf}"></p>
+                        </span>
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Lieu de naissance de l’enfant</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.lieuNaiss}"></p>
+                        </span>
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Sexe de l’enfant</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.sexeEnf}"></p>
+                        </span>
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Nom du père de l’enfant</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.nomPer}"></p>
+                        </span>
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Prénom du père de l’enfant</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.prenomPer}"></p>
+                        </span>
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Date de naissance du père de l’enfant</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.dateNaissPere}"></p>
+                        </span>
+                        <span class="list-group-item">
+                            <h4 class="list-group-item-heading">Adresse de domiciliation du père de l’enfant</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.adressDomicilPer}"></p>
+                        </span>
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Profession du père de l’enfant</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.professPer}"></p>
+                        </span>
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Nom de la mère de l’enfant</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.nomMereEnf}"></p>
+                        </span>
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Prénom de la mère de l’enfant</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.prenMerEnf}"></p>
+                        </span>
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Date de naissance de de mère l’enfant</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.dateNaissMere}"></p>
+                        </span>
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Adresse de domiciliation de de mère l’enfant</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.adressDomicilMer}"></p>
+                        </span>
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Profession de la mère de l’enfant</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.professMer}"></p>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <br><br><br><br>
+                    <a class="btn " style="background-color: #df691a; color:white; float: right;" th:href="@{/}"><i class="fa fa-arrow-left"></i>Retour</a>
+                </div>
+            </div>
+        </div>
+        <div	 th:replace="~{fragments/jsfooter :: body}"></div>
+    </body>
+
+</html>

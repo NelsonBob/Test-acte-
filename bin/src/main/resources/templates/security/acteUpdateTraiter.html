@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" 
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+    <head th:replace="~{base :: head(title = 'Information du compte')}">
+    </head>
+
+    <body>
+
+        <nav th:replace="~{base :: navigation}"></nav>
+        <div class="container">
+            <div> <strong><b th:text="${execInfo.now.time}"></b></strong></div>
+            <div class="row">
+                <div class="col-md-6">
+                    <p> <br/></p>
+                    <form  th:action="@{/acte/traite/no/{id}(id=${acteForm.id})}" th:object="${acteForm}" method="post" class="form-signi">   
+                         <p class="error-message"
+                                   th:if="${#fields.hasGlobalErrors()}"
+                                   th:each="error : ${#fields.errors('global')}"
+                                   th:text="${error}">Validation error</p>
+                        <div th:if="${param.error}">
+                            <div class="alert alert-danger">
+                                Veillez bien remplir le formulaire svp !
+                            </div>
+                        </div>     
+                        <fieldset>
+                            <h3>Traiter un acte de naissance</h3>
+                            <hr>
+                            <label for="nomOffiEtCv">Nom de l’officier d’état civil</label>:  
+                            <input type="text" id="nomOffiEtCv"  
+                                   class="form-control" th:field="*{nomOffiEtCv}" 
+                                   placeholder="Nom de l’officier d’état civil" required/>
+                            <label for="nomAssOffEtCv">Nom de l’assistant de l’officier d’état civil</label>:  
+                            <input type="text" id="nomAssOffEtCv"   
+                                   class="form-control" th:field="*{nomAssOffEtCv}" 
+                                   placeholder="Nom de l’assistant de l’officier d’état civil" required/>
+                            <label for="numActNaiss">Numero de l'acte de naissance</label>:  
+                            <input type="tel" id="numActNaiss" 
+                                   th:classappend="${#fields.hasErrors('numActNaiss')}? 'has-error':''"
+                                   class="form-control" th:field="*{numActNaiss}" 
+                                   placeholder="Numero de l'acte de naissance" required/>
+                            <p class="error-message"
+                               th:each="error: ${#fields.errors('numActNaiss')}"
+                               th:text="${error}">Validation error</p>
+                            <div class="form-actions">
+                                <br/>
+                                <a  th:href="@{/acte/traite/no}" class="btn btn-primary"><i class="fa fa-arrow-left"></i>Retour</a>
+                                <button type="submit" class="btn btn-success" style="float: right"><i class="fa fa-check"></i>Traiter</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+
+                <div class="col-md-6">
+                    <p> <br/><br/><br/>    </p> <h3>Informations sur l'acte</h3>
+                    <hr>
+                    <div class="list-group">
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Nom de l’officier d’état civil</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.nomOffiEtCv}"></p>
+                        </span>
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Nom de l’assistant de l’officier d’état civil</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.nomAssOffEtCv}"></p>
+                        </span>
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Nom du déclarant de l’acte de naissance</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.user.firstName}"></p>
+                        </span>
+
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Région d’origine</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.regOrigin}"></p>
+                        </span>
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Département d’origine</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.departOrigin}"></p>
+                        </span>
+
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Arrondissement d’origine</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.ArrOrigin}"></p>
+                        </span>
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Nom du centre d’état civil</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.nomCentEtCv}"></p>
+                        </span>
+                        <span class="list-group-item">
+                            <h4 class="list-group-item-heading">Nom de l’enfant</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.nomEnf}"></p>
+                        </span>
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Prénom de l’enfant</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.prenomEnf}"></p>
+                        </span>
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Date de naissance de l’enfant</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.dateNaissEnf}"></p>
+                        </span>
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Lieu de naissance de l’enfant</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.lieuNaiss}"></p>
+                        </span>
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Sexe de l’enfant</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.sexeEnf}"></p>
+                        </span>
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Nom du père de l’enfant</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.nomPer}"></p>
+                        </span>
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Prénom du père de l’enfant</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.prenomPer}"></p>
+                        </span>
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Date de naissance du père de l’enfant</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.dateNaissPere}"></p>
+                        </span>
+                        <span class="list-group-item">
+                            <h4 class="list-group-item-heading">Adresse de domiciliation du père de l’enfant</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.adressDomicilPer}"></p>
+                        </span>
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Profession du père de l’enfant</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.professPer}"></p>
+                        </span>
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Nom de la mère de l’enfant</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.nomMereEnf}"></p>
+                        </span>
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Prénom de la mère de l’enfant</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.prenMerEnf}"></p>
+                        </span>
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Date de naissance de de mère l’enfant</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.dateNaissMere}"></p>
+                        </span>
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Adresse de domiciliation de de mère l’enfant</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.adressDomicilMer}"></p>
+                        </span>
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Profession de la mère de l’enfant</h4>
+                            <p class="list-group-item-text" th:text="${acteForm.professMer}"></p>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div	 th:replace="~{fragments/jsfooter :: body}"></div>
+    </body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" 
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+    <head th:replace="~{base :: head(title = 'Information du compte')}">
+    </head>
+
+    <body>
+
+        <nav th:replace="~{base :: navigation}"></nav>
+        <div class="container">
+            <div> <strong><b th:text="${execInfo.now.time}"></b></strong></div>
+            <div class="row">
+                <div class="col-md-6">
+                    <p> <br/><div th:if="${param.success}">
+                        <div class="alert alert-success" style="text-align: center">
+                            Mise a jour du mot de passe reussi! 
+                        </div>
+                    </div> <br/> </p>
+                    <form name="f" th:action="@{/user/pass/{id}(id=${userForm.id})}" th:object="${userForm}" method="post" class="form-signin">   
+
+                        <fieldset>
+                            <h3>Changer le mot de passe</h3>
+                            <hr>
+                            <label for="password">Nouveau mot de passe</label>:  
+                            <input type="password" id="password"   class="form-control" th:field="*{password}" placeholder="New password"/>
+                          
+                            <div class="form-actions">
+                                <br/>
+                                <a  th:href="@{/user}" class="btn btn-primary"><i class="fa fa-arrow-left"></i>Retour</a>
+                                <button type="submit" class="btn btn-success" style="margin-left:80px;"><i class="fa fa-save"></i>Save</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+
+  <div class="col-md-6">
+                    <p> <br/><br/><br/></p> <hr/>
+                    <div class="list-group">
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Nom d'utilisateur</h4>
+                            <p class="list-group-item-text" th:text="${userForm.firstName}"></p>
+                        </span>
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Prenom</h4>
+                            <p class="list-group-item-text" th:text="${userForm.lastName}"></p>
+                        </span>
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Date de naissance</h4>
+                            <p class="list-group-item-text" th:text="${#dates.format(userForm.dateNaissance, 'dd-MM-yyyy  HH:mm')}"></p>
+                        </span>
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Sexe</h4>
+                            <p class="list-group-item-text" th:text="${userForm.sexe}"></p>
+                        </span>
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Téléphone</h4>
+                            <p class="list-group-item-text" th:text="${userForm.telephone}"></p>
+                        </span>
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Nationalité</h4>
+                            <p class="list-group-item-text" th:text="${userForm.nationalite}"></p>
+                        </span>
+                        <span  class="list-group-item">
+                            <h4 class="list-group-item-heading">Profession</h4>
+                            <p class="list-group-item-text" th:text="${userForm.profession}"></p>
+                        </span>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div	 th:replace="~{fragments/jsfooter :: body}"></div>
+
+    </body>
+
+</html>

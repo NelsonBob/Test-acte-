@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN"
+   "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" 
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" 
+              name="rpt_users" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" 
+              leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" 
+              uuid="c9316912-e224-49ae-8b52-4742bbd7dc06">
+    <property name="ireport.zoom" value="1.0"/>
+    <property name="ireport.x" value="0"/>
+    <property name="ireport.y" value="0"/>
+    <parameter name="enabled" class="java.lang.Boolean" />
+    <parameter name="title" class="java.lang.String" />
+    <queryString>
+		<![CDATA[select * from person where enabled = $P{enabled}]]>
+    </queryString>
+    <field name="id" class="java.lang.Long">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="date_enreg" class="java.sql.Timestamp">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="date_naissance" class="java.sql.Date">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="date_updat" class="java.sql.Timestamp">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="email" class="java.lang.String">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="enabled" class="java.lang.Boolean">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="first_name" class="java.lang.String">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="last_name" class="java.lang.String">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="nationalite" class="java.lang.String">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="password" class="java.lang.String">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="profession" class="java.lang.String">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="sexe" class="java.lang.String">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="telephone" class="java.lang.Integer">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="79" splitType="Stretch">
+            <staticText>
+                <reportElement x="208" y="16" width="100" height="20" uuid="3141614f-dfe8-44d9-9c33-d973d2504463"/>
+                <textElement textAlignment="Center">
+                    <font size="13" isBold="true"/>
+                </textElement>
+                <text><![CDATA[List User]]></text>
+            </staticText>
+        </band>
+    </title>
+    <pageHeader>
+        <band splitType="Stretch"/>
+    </pageHeader>
+    <columnHeader>
+        <band height="20" splitType="Stretch">
+            <staticText>
+                <reportElement mode="Opaque" x="0" y="0" width="30" height="20" forecolor="#FFFFFF" backcolor="#FF6633" uuid="82247bcd-3492-4c3b-8fdb-8acbbd52bddb"/>
+                <box>
+                    <pen lineWidth="0.25"/>
+                    <topPen lineWidth="0.25"/>
+                    <leftPen lineWidth="0.25"/>
+                    <bottomPen lineWidth="0.25"/>
+                    <rightPen lineWidth="0.25"/>
+                </box>
+                <textElement textAlignment="Center">
+                    <font size="11" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Id User]]></text>
+            </staticText>
+            <staticText>
+                <reportElement mode="Opaque" x="30" y="0" width="100" height="20" forecolor="#FFFFFF" backcolor="#FF6633" uuid="fd01e95c-fbb3-4898-ac8e-4174ee617a2c"/>
+                <box>
+                    <pen lineWidth="0.25"/>
+                    <topPen lineWidth="0.25"/>
+                    <leftPen lineWidth="0.25"/>
+                    <bottomPen lineWidth="0.25"/>
+                    <rightPen lineWidth="0.25"/>
+                </box>
+                <textElement textAlignment="Center">
+                    <font size="11" isBold="true"/>
+                </textElement>
+                <text><![CDATA[NOM]]></text>
+            </staticText>
+            <staticText>
+                <reportElement mode="Opaque" x="130" y="0" width="100" height="20" forecolor="#FFFFFF" backcolor="#FF6633" uuid="c2429f53-2715-4a63-a3ef-fa347984447c"/>
+                <box>
+                    <pen lineWidth="0.25"/>
+                    <topPen lineWidth="0.25"/>
+                    <leftPen lineWidth="0.25"/>
+                    <bottomPen lineWidth="0.25"/>
+                    <rightPen lineWidth="0.25"/>
+                </box>
+                <textElement textAlignment="Center">
+                    <font size="11" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Prenom]]></text>
+            </staticText>
+            <staticText>
+                <reportElement mode="Opaque" x="330" y="0" width="100" height="20" forecolor="#FFFFFF" backcolor="#FF6633" uuid="a021577a-4c73-4391-91e3-39e8062591be"/>
+                <box>
+                    <pen lineWidth="0.25"/>
+                    <topPen lineWidth="0.25"/>
+                    <leftPen lineWidth="0.25"/>
+                    <bottomPen lineWidth="0.25"/>
+                    <rightPen lineWidth="0.25"/>
+                </box>
+                <textElement textAlignment="Center">
+                    <font size="11" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Date Naissance]]></text>
+            </staticText>
+            <staticText>
+                <reportElement mode="Opaque" x="430" y="0" width="100" height="20" forecolor="#FFFFFF" backcolor="#FF6633" uuid="d41972e1-bda6-43cc-905b-e74438d18573"/>
+                <box>
+                    <pen lineWidth="0.25"/>
+                    <topPen lineWidth="0.25"/>
+                    <leftPen lineWidth="0.25"/>
+                    <bottomPen lineWidth="0.25"/>
+                    <rightPen lineWidth="0.25"/>
+                </box>
+                <textElement textAlignment="Center">
+                    <font size="11" isBold="true"/>
+                </textElement>
+                <text><![CDATA[E-mail]]></text>
+            </staticText>
+            <staticText>
+                <reportElement mode="Opaque" x="230" y="0" width="100" height="20" forecolor="#FFFFFF" backcolor="#FF6633" uuid="38e5700d-df3d-42de-9513-3dcdeb98a536"/>
+                <box>
+                    <pen lineWidth="0.25"/>
+                    <topPen lineWidth="0.25"/>
+                    <leftPen lineWidth="0.25"/>
+                    <bottomPen lineWidth="0.25"/>
+                    <rightPen lineWidth="0.25"/>
+                </box>
+                <textElement textAlignment="Center">
+                    <font size="11" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Sexe]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="27" splitType="Stretch">
+            <textField>
+                <reportElement x="0" y="0" width="30" height="20" uuid="f1c4fe9f-6932-460f-89e5-66b24b005a2b"/>
+                <box>
+                    <pen lineWidth="0.25"/>
+                    <topPen lineWidth="0.25"/>
+                    <leftPen lineWidth="0.25"/>
+                    <bottomPen lineWidth="0.25"/>
+                    <rightPen lineWidth="0.25"/>
+                </box>
+                <textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="30" y="0" width="100" height="20" uuid="cff82452-e6c7-4cb9-9905-d5009440f26c"/>
+                <box>
+                    <pen lineWidth="0.25"/>
+                    <topPen lineWidth="0.25"/>
+                    <leftPen lineWidth="0.25"/>
+                    <bottomPen lineWidth="0.25"/>
+                    <rightPen lineWidth="0.25"/>
+                </box>
+                <textFieldExpression><![CDATA[$F{first_name}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="130" y="0" width="100" height="20" uuid="bec53e11-648e-48a3-b510-cd75af8c6697"/>
+                <box>
+                    <pen lineWidth="0.25"/>
+                    <topPen lineWidth="0.25"/>
+                    <leftPen lineWidth="0.25"/>
+                    <bottomPen lineWidth="0.25"/>
+                    <rightPen lineWidth="0.25"/>
+                </box>
+                <textFieldExpression><![CDATA[$F{last_name}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="330" y="0" width="100" height="20" uuid="12c255cc-b2d3-4d5f-9f8c-788abfac58eb"/>
+                <box>
+                    <pen lineWidth="0.25"/>
+                    <topPen lineWidth="0.25"/>
+                    <leftPen lineWidth="0.25"/>
+                    <bottomPen lineWidth="0.25"/>
+                    <rightPen lineWidth="0.25"/>
+                </box>
+                <textFieldExpression><![CDATA[$F{date_naissance}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="430" y="0" width="100" height="20" uuid="2a8d673b-b286-483c-9004-3afcc4119436"/>
+                <box>
+                    <pen lineWidth="0.25"/>
+                    <topPen lineWidth="0.25"/>
+                    <leftPen lineWidth="0.25"/>
+                    <bottomPen lineWidth="0.25"/>
+                    <rightPen lineWidth="0.25"/>
+                </box>
+                <textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="230" y="0" width="100" height="20" uuid="82351580-482e-4649-82f0-ea0779c7adfb"/>
+                <box>
+                    <pen lineWidth="0.25"/>
+                    <topPen lineWidth="0.25"/>
+                    <leftPen lineWidth="0.25"/>
+                    <bottomPen lineWidth="0.25"/>
+                    <rightPen lineWidth="0.25"/>
+                </box>
+                <textFieldExpression><![CDATA[$F{sexe}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <columnFooter>
+        <band splitType="Stretch"/>
+    </columnFooter>
+    <pageFooter>
+        <band splitType="Stretch"/>
+    </pageFooter>
+    <summary>
+        <band splitType="Stretch"/>
+    </summary>
+</jasperReport>
